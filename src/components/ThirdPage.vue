@@ -1,10 +1,18 @@
 <template>
-  <h1>Ща в поисках нормального слайдера до после</h1>
+  <comparify class="bg-white h-64 w-full">
+    <template v-slot:first>
+    </template>
+    <template v-slot:second>
+    </template>
+  </comparify>
 </template>
 
 <script>
+import Comparify from "@/components/comparify.vue";
+
 export default {
-  name: "ThirdPage"
+  name: "ThirdPage",
+  components: {Comparify}
 }
 </script>
 

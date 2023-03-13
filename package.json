@@ -8,8 +8,12 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vue-toys/resize-observer": "^1.0.4",
     "core-js": "^3.8.3",
+    "resize-observer-polyfill": "^1.5.1",
+    "resize-observer-vue": "^1.2.0",
     "vue": "^3.2.13",
+    "vue-resize-observer": "^2.0.16",
     "vue-scroll-snap": "^0.1.11"
   },
   "devDependencies": {

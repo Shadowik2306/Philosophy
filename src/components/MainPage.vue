@@ -3,7 +3,6 @@
     <div class="item"><FirstPage/></div>
     <div class="item"><SecondPage/></div>
     <div class="item"><ThirdPage/></div>
-    <div class="item"></div>
   </vue-scroll-snap>
 </template>
 
