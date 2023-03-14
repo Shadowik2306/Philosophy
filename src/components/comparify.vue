@@ -2,19 +2,41 @@
   <div class="compare-wrapper">
     <div class="compare">
 
-      <div class="compare__content" :style="{'width': width}">
+      <div class="compare__content" :style="{width: `calc(${100 + '%'})`}">
         <slot name="first"></slot>
       </div>
 
-
-      <div class="handle-wrap" :style="{left:`calc(${compareWidth + '%'}`}">
-        <div class="resize" v-resize="handleResize"></div>
+      <resize-observer :notify="handleResize"></resize-observer>
+      <div class="handle-wrap" :style="{left:`calc(${compareWidth + '%'} - 2px / 2`}">
         <div class="handle">
-          <svg class="handle__arrow handle__arrow--l feather feather-chevron-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          <svg class="handle__arrow handle__arrow--r feather feather-chevron-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <svg class="handle__arrow handle__arrow--l feather feather-chevron-left"
+               xmlns="http://www.w3.org/2000/svg"
+               width="24"
+               height="24"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          <svg class="handle__arrow handle__arrow--r feather feather-chevron-right"
+               xmlns="http://www.w3.org/2000/svg"
+               width="24"
+               height="24"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
         </div>
         <span class="handle-line"></span>
       </div>
+
 
       <div class="compare-overlay " :style="{width:`calc(${compareWidth + '%'})`}">
         <div class="compare-overlay__content" :style="{ 'width': width}">
@@ -22,24 +44,31 @@
         </div>
       </div>
 
-
-
     </div>
-    <input type="range" min="0" max="100" :step="step" class="compare__range" :value="compareWidth" @input="handleInput" tabindex="-1">
+    <input type="range"
+           min="0"
+           max="100"
+           :step="step"
+           class="compare__range"
+           :value="compareWidth"
+           @input="handleInput"
+           tabindex="-1">
 
   </div>
 </template>
 
 <script>
 
+import {ResizeObserver} from "resize-observer-vue";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "comparify",
+  components: {ResizeObserver},
   props:{
     value: { default: 50 },
     step: { default: '.1' }
   },
-  components: {  },
   data(){
     return {
       width: null,
@@ -56,6 +85,7 @@ export default {
   },
 
   methods:{
+
     handleInput(e){
       this.compareWidth = e.target.value
       this.$emit('input', e.target.value)
@@ -75,24 +105,9 @@ export default {
 </script>
 
 <style scoped>
-:root{
-  --handle-bg: blue;
-  --handle-width: 30px;
-  --handle-height: 30px;
-  --handle-chevron-size: 20px;
-
-  --handle-line-bg: blue;
-  --handle-line-width: 2px;
-  --handle-line-height: 100%;
-
-  --z-index-handle: 5;
-  --z-index-handle-line: 4;
-  --z-index-range-input: 6;
-  width: 100%;
-}
-
 .compare-wrapper{
   position: relative;
+  height: 100%;
 }
 .compare,
 .compare__content{
@@ -110,11 +125,12 @@ export default {
   position:relative;
   height: 100%;
   width: 100%;
+  background: black;
 }
 
 .handle__arrow{
   position: absolute;
-  width: var(--handle-chevron-size);
+  width: 20px;
 }
 .handle__arrow--l{
   left:0;
@@ -131,44 +147,44 @@ export default {
   top: 50%;
   height: 100%;
   transform: translate(-50%, -50%);
-  z-index: var(--z-index-handle);
+  z-index: 5;
 }
 .handle{
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  background: var(--handle-bg);
+  color: black;
+  background: white;
   border-radius: 50%;
-  width: var(--handle-width);
-  height: var(--handle-height);
+  width: 30px;
+  height: 30px;
 }
 
 .handle-line{
   content: '';
   position: absolute;
   top:0;
-  width: var(--handle-line-width);
+  width: 2px;
   height: 100%;
-  background: var(--handle-line-bg);
-  z-index: var(--z-index-handle-line);
+  background: white;
+  z-index: 4;
   pointer-events:none;
   user-select:none;
 }
 
 .compare__range{
-  /*position: absolute;*/
+  position: absolute;
   cursor: ew-resize;
-  left: calc(var(--handle-width) / -2);
-  width: calc(100% + var(--handle-width));
+  left: calc(30px / -2);
+  width: calc(100% + 30px);
   transform: translatey(-50%);
   top: calc(50%);
-  z-index: var(--z-index-range-input);
+  z-index: 6;
   -webkit-appearance: none;
-  height: var(--handle-height);
+  height: 30px;
   /* debugging purposes only */
   background: rgba(0,0,0,.4);
-  opacity: .0;;
+  opacity: .0;
 }
 
 .object-fit-cover{
