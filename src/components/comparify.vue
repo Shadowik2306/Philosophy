@@ -66,7 +66,7 @@ export default {
   name: "comparify",
   components: {ResizeObserver},
   props:{
-    value: { default: 50 },
+    value: { default: 0 },
     step: { default: '.1' }
   },
   data(){
@@ -82,8 +82,11 @@ export default {
   },
   mounted(){
     this.width = this.getContainerWidth();
+    window.addEventListener("resize", this.handleResize);
   },
-
+  unmounted() {
+    window.removeEventListener("resize", this.handleResize);
+  },
   methods:{
 
     handleInput(e){
