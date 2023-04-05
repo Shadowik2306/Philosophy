@@ -3,9 +3,7 @@
     <template v-slot:first>
       <div class="container">
         <div>
-          <p class="text">
-          {{ this.textFirst }}
-          </p>
+          <div class="text mostly-customized-scrollbar" v-html="textFirst"></div>
         </div>
         <div>
           <img :src="require('@/assets/' + imageFirst)">
@@ -18,9 +16,7 @@
           <img :src="require('@/assets/' + imageSecond)">
         </div>
         <div>
-          <p class="text">
-            {{ this.textSecond }}
-          </p>
+          <div class="text mostly-customized-scrollbar" v-html="textSecond"></div>
         </div>
       </div>
     </template>
@@ -67,20 +63,49 @@ export default {
 
   .container div {
     width: fit-content;
+    padding-top: 2em;
   }
 
   .container div .text {
     background: rgba(0, 0, 0, 50%);
     font-family: "Montserrat Bold";
-    width: 60em;
-    line-height: 20px;
+    width: 50em;
+    line-height: 25px;
     padding: 2em;
     font-size: 20px;
+    overflow: scroll;
+    height: 800px;
   }
 
   .container div img {
     position: relative;
     top:50%;
+  }
+
+  .visible-scrollbar,
+  .invisible-scrollbar,
+  .mostly-customized-scrollbar {
+    display: block;
+    width: 10em;
+    overflow: auto;
+    height: 2em;
+  }
+
+  .invisible-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Demonstrate a "mostly customized" scrollbar
+   * (won't be visible otherwise if width/height is specified) */
+  .mostly-customized-scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color: #000; /* or add it to the track */
+  }
+
+  /* Add a thumb */
+  .mostly-customized-scrollbar::-webkit-scrollbar-thumb {
+    background: #FFF;
   }
 
 </style>

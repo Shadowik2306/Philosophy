@@ -30,7 +30,7 @@ body {
 html {
 
 }
-::-webkit-scrollbar {
+body ::-webkit-scrollbar {
   width: 0;
 }
 #app {
@@ -76,6 +76,10 @@ html {
 
 .item h1 {
   position: absolute;
+}
+
+img {
+  pointer-events: none;
 }
 
 @font-face {
