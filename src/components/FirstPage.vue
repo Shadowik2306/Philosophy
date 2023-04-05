@@ -1,10 +1,15 @@
 <template>
-  <h1>Привет, Макс</h1>
+    <comparify-title
+        :text-first="'Философия для физиков'"
+        :text-second="'Физика для философов'"/>
 </template>
 
 <script>
+import ComparifyTitle from "@/components/Comprarify/ComparifyTitle.vue";
+
 export default {
-  name: "FirstPage"
+  name: "FirstPage",
+  components: {ComparifyTitle}
 }
 </script>
 

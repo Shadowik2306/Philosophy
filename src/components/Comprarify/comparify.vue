@@ -52,6 +52,7 @@
            class="compare__range"
            :value="compareWidth"
            @input="handleInput"
+           @dblclick="handleDoubleClick"
            tabindex="-1">
 
   </div>
@@ -103,6 +104,20 @@ export default {
     getContainerWidth(){
       return window.getComputedStyle(this.$el,null).getPropertyValue('width')
     },
+    handleDoubleClick(e) {
+      if (e.target.value < 50) {
+        for (let i = e.target.value; i <= 100; i++) {
+          this.compareWidth = i;
+          setTimeout(() => {}, 100);
+        }
+      }
+      else {
+        for (let i = e.target.value; i >= 0; i--) {
+          this.compareWidth = i;
+          setTimeout(() => {}, 100);
+        }
+      }
+    }
   }
 }
 </script>
@@ -116,6 +131,7 @@ export default {
 .compare__content{
   position: relative;
   height: 100%;
+  background: url("@/assets/background.png");
 }
 
 .compare-overlay{
@@ -128,7 +144,7 @@ export default {
   position:relative;
   height: 100%;
   width: 100%;
-  background: black;
+  background: url("@/assets/background.png");
 }
 
 .handle__arrow{

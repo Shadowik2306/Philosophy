@@ -24,8 +24,11 @@ export default {
 </script>
 
 <style>
+body {
+
+}
 html {
-  background: #ecf0f1;
+
 }
 ::-webkit-scrollbar {
   width: 0;
@@ -73,9 +76,25 @@ html {
 
 .item h1 {
   position: absolute;
-  left: 50%;
-  margin-right: -50%;
-  top: 50%;
-  transform: translate(0, -50%)
+}
+
+@font-face {
+  font-family: 'Montserrat Black';
+  src: url('@/assets/fonts/montserrat_black.eot'); /* IE 9 Compatibility Mode */
+  src: url('@/assets/fonts/montserrat_black.eot') format('embedded-opentype'), /* IE < 9 */
+  url('@/assets/fonts/montserrat_black.woff2') format('woff2'), /* Super Modern Browsers */
+  url('@/assets/fonts/montserrat_black.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+  url('@/assets/fonts/montserrat_black.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('@/assets/fonts/montserrat_black.svg') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Montserrat Bold';
+  src: url('@/assets/fonts/montserrat_bold.eot'); /* IE 9 Compatibility Mode */
+  src: url('@/assets/fonts/montserrat_bold.eot') format('embedded-opentype'), /* IE < 9 */
+  url('@/assets/fonts/montserrat_bold.woff2') format('woff2'), /* Super Modern Browsers */
+  url('@/assets/fonts/montserrat_bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+  url('@/assets/fonts/montserrat_bold.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('@/assets/fonts/montserrat_bold.svg') format('svg'); /* Chrome < 4, Legacy iOS */
 }
 </style>
