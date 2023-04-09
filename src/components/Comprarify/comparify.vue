@@ -67,13 +67,15 @@ export default {
   name: "comparify",
   components: {ResizeObserver},
   props:{
-    value: { default: 0 },
-    step: { default: '.1' }
+    value: { default: 1 },
+    step: { default: '.1' },
+    intro: { default: false}
   },
   data(){
     return {
       width: null,
       compareWidth: this.value,
+      last_input: this.value - 1,
     }
   },
   watch:{
@@ -84,12 +86,37 @@ export default {
   mounted(){
     this.width = this.getContainerWidth();
     window.addEventListener("resize", this.handleResize);
+    if (this.intro) {
+      let timetId;
+      setTimeout(() => {
+        timetId = setInterval(() => {
+          if (this.compareWidth >= 99 || this.last_input !== this.compareWidth - 1) {
+            clearInterval(timetId);
+            this.last_input = this.compareWidth + 1;
+            setTimeout(() => {
+              timetId = setInterval(() => {
+                if (this.compareWidth <= 1 || this.last_input !== this.compareWidth + 1) {
+                  clearInterval(timetId);
+                }
+                else {
+                  this.last_input = this.compareWidth;
+                  this.compareWidth--;
+                }
+              }, 30)
+            }, 2000);
+          }
+          else {
+            this.last_input = this.compareWidth;
+            this.compareWidth++;
+          }
+        }, 30)
+      }, 2000);
+    }
   },
   unmounted() {
     window.removeEventListener("resize", this.handleResize);
   },
   methods:{
-
     handleInput(e){
       this.compareWidth = e.target.value
       this.$emit('input', e.target.value)
@@ -99,6 +126,7 @@ export default {
       if(w === this.width)
         return;
       this.width = w
+
       console.log(this.width)
     },
     getContainerWidth(){

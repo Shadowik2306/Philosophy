@@ -1,5 +1,5 @@
 <template>
-  <comparify class="bg-white h-64 w-full">
+  <comparify class="bg-white h-64 w-full" :intro="true">
     <template v-slot:first>
       <div class="body">
         <h1 class="logo">{{ this.textFirst }}</h1>

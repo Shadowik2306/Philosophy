@@ -71,7 +71,7 @@ export default {
     font-family: "Montserrat Bold";
     width: 50em;
     line-height: 25px;
-    padding: 2em;
+    padding: 1em;
     font-size: 20px;
     overflow: scroll;
     height: 800px;

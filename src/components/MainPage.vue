@@ -1,24 +1,26 @@
 <template>
   <vue-scroll-snap :fullscreen="true">
-    <div class="item"><FirstPage/></div>
-    <div class="item"><SecondPage/></div>
-    <div class="item"><ThirdPage/></div>
-    <div class="item"><FourthPage/></div>
-    <div class="item"><FifthPage/></div>
-    <div class="item"><SixthPage/></div>
+    <div class="item"><TitlePage/></div>
+    <div class="item"><InfoPage/></div>
+    <div class="item"><AtomPage/></div>
+    <div class="item"><CavePage/></div>
+    <div class="item"><RelativityPage/></div>
+    <div class="item"><ArrowPage/></div>
+    <div class="item"><LadderPage/></div>
   </vue-scroll-snap>
 </template>
 
 <script>
 import VueScrollSnap from "vue-scroll-snap";
-import FirstPage from "@/components/FirstPage.vue";
-import SecondPage from "@/components/SecondPage.vue";
-import ThirdPage from "@/components/ThirdPage.vue";
-import FourthPage from "@/components/FourthPage.vue";
-import FifthPage from "@/components/FifthPage.vue";
-import SixthPage from "@/components/SixthPage.vue";
+import TitlePage from "@/components/TitlePage.vue";
+import AtomPage from "@/components/AtomPage.vue";
+import CavePage from "@/components/CavePage.vue";
+import RelativityPage from "@/components/RelativityPage.vue";
+import ArrowPage from "@/components/ArrowPage.vue";
+import LadderPage from "@/components/LadderPage.vue";
+import InfoPage from "@/components/InfoPage.vue";
 export default {
   name: "FullscreenVertical",
-  components: {SixthPage, FifthPage, FourthPage, ThirdPage, SecondPage, FirstPage, VueScrollSnap}
+  components: {InfoPage, LadderPage, ArrowPage, RelativityPage, CavePage, AtomPage, TitlePage, VueScrollSnap}
 };
 </script>

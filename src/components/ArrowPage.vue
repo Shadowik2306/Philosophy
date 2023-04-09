@@ -18,7 +18,7 @@
 import ComparifyMain from "@/components/Comprarify/ComparifyMain.vue";
 
 export default {
-  name: "FifthPage",
+  name: "ArrowPage",
   components: {ComparifyMain}
 }
 </script>

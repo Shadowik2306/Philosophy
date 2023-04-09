@@ -8,7 +8,7 @@
 import ComparifyTitle from "@/components/Comprarify/ComparifyTitle.vue";
 
 export default {
-  name: "FirstPage",
+  name: "TitlePage",
   components: {ComparifyTitle}
 }
 </script>

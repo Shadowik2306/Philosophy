@@ -21,7 +21,7 @@
 import ComparifyMain from "@/components/Comprarify/ComparifyMain.vue";
 
 export default {
-  name: "SecondPage",
+  name: "AtomPage",
   components: {ComparifyMain}
 }
 </script>

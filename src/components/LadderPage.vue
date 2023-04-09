@@ -19,7 +19,7 @@
 import ComparifyMain from "@/components/Comprarify/ComparifyMain.vue";
 
 export default {
-  name: "SixthPage",
+  name: "LadderPage",
   components: {ComparifyMain}
 }
 </script>

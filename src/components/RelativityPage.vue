@@ -23,7 +23,7 @@
 import ComparifyMain from "@/components/Comprarify/ComparifyMain.vue";
 
 export default {
-  name: "FourthPage",
+  name: "RelativityPage",
   components: {ComparifyMain}
 }
 </script>
