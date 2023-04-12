@@ -14,7 +14,8 @@
     "resize-observer-vue": "^1.2.0",
     "vue": "^3.2.13",
     "vue-resize-observer": "^2.0.16",
-    "vue-scroll-snap": "^0.1.11"
+    "vue-scroll-snap": "^0.1.11",
+    "bootstrap": "^5.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

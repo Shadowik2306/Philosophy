@@ -57,7 +57,7 @@ export default {
   .container {
     display: flex;
     justify-content: space-around;
-
+    align-items: center;
     box-sizing: border-box;
   }
 
@@ -79,7 +79,7 @@ export default {
 
   .container div img {
     position: relative;
-    top:50%;
+    width: 40em;
   }
 
   .visible-scrollbar,
