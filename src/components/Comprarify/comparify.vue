@@ -74,8 +74,11 @@ export default {
   data(){
     return {
       width: null,
+      thisDirection: 0.4,
+      waiting: 1,
       compareWidth: this.value,
       last_input: this.value - 1,
+
     }
   },
   watch:{
@@ -87,30 +90,7 @@ export default {
     this.width = this.getContainerWidth();
     window.addEventListener("resize", this.handleResize);
     if (this.intro) {
-      let timetId;
-      setTimeout(() => {
-        timetId = setInterval(() => {
-          if (this.compareWidth >= 99 || this.last_input !== this.compareWidth - 1) {
-            clearInterval(timetId);
-            this.last_input = this.compareWidth + 1;
-            setTimeout(() => {
-              timetId = setInterval(() => {
-                if (this.compareWidth <= 1 || this.last_input !== this.compareWidth + 1) {
-                  clearInterval(timetId);
-                }
-                else {
-                  this.last_input = this.compareWidth;
-                  this.compareWidth--;
-                }
-              }, 30)
-            }, 2000);
-          }
-          else {
-            this.last_input = this.compareWidth;
-            this.compareWidth++;
-          }
-        }, 30)
-      }, 2000);
+      setInterval(this.timerFunction,30)
     }
   },
   unmounted() {
@@ -118,7 +98,8 @@ export default {
   },
   methods:{
     handleInput(e){
-      this.compareWidth = e.target.value
+      this.waiting = -1;
+      this.compareWidth = parseFloat(e.target.value)
       this.$emit('input', e.target.value)
     },
     handleResize(){
@@ -135,15 +116,39 @@ export default {
     handleDoubleClick(e) {
       if (e.target.value < 50) {
         for (let i = e.target.value; i <= 100; i++) {
-          this.compareWidth = i;
+          this.compareWidth = parseFloat(i);
           setTimeout(() => {}, 100);
         }
       }
       else {
         for (let i = e.target.value; i >= 0; i--) {
-          this.compareWidth = i;
+          this.compareWidth =  parseFloat(i);
           setTimeout(() => {}, 100);
         }
+      }
+      this.waiting = 2;
+    },
+    timerFunction(){
+      if(this.waiting <= 0)
+        return
+      if(this.waiting == 2 && this.compareWidth >= 99 ){
+        this.thisDirection = -0.4;
+        this.waiting = 0;
+        setTimeout(()=>{if(this.waiting>=0)this.waiting=1},2000)
+      }
+      else if(this.waiting == 2 && this.compareWidth <= 1 ){
+          this.thisDirection = 0.4;
+          this.waiting = 0;
+          setTimeout(()=>{if(this.waiting>=0)this.waiting=1},2000)
+      }
+      if(this.waiting!=0){
+        this.last_input = this.compareWidth;
+        this.compareWidth += this.thisDirection;
+        this.waiting = 2;
+        if(this.compareWidth>=50)
+          this.thisDirection-=0.09
+        else
+        this.thisDirection+=0.09
       }
     }
   }
