@@ -75,7 +75,7 @@ export default {
     return {
       width: null,
       thisDirection: 8,
-      waiting: 1,
+      waiting: 2,
       compareWidth: this.value,
       last_input: this.value - 1,
 
@@ -132,16 +132,16 @@ export default {
       if(this.waiting <= 0)
         return
       if(this.waiting == 2 && this.compareWidth >= 99 ){
-        this.thisDirection = -8;
+        this.thisDirection = -5;
         this.waiting = 0;
         this.compareWidth = 99;
-        setTimeout(()=>{if(this.waiting>=0)this.waiting=1},2000)
+        setTimeout(()=>{if(this.waiting>=0)this.waiting=1},4000)
       }
       else if(this.waiting == 2 && this.compareWidth <= 1 ){
-          this.thisDirection = 8;
+          this.thisDirection = 5;
           this.waiting = 0;
           this.compareWidth = 1;
-          setTimeout(()=>{if(this.waiting>=0)this.waiting=1},2000)
+          setTimeout(()=>{if(this.waiting>=0)this.waiting=1},4000)
       }
       if(this.waiting!=0){
         this.last_input = this.compareWidth;
