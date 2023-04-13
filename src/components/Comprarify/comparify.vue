@@ -74,7 +74,7 @@ export default {
   data(){
     return {
       width: null,
-      thisDirection: 0.4,
+      thisDirection: 8,
       waiting: 1,
       compareWidth: this.value,
       last_input: this.value - 1,
@@ -132,23 +132,23 @@ export default {
       if(this.waiting <= 0)
         return
       if(this.waiting == 2 && this.compareWidth >= 99 ){
-        this.thisDirection = -0.4;
+        this.thisDirection = -8;
         this.waiting = 0;
+        this.compareWidth = 99;
         setTimeout(()=>{if(this.waiting>=0)this.waiting=1},2000)
       }
       else if(this.waiting == 2 && this.compareWidth <= 1 ){
-          this.thisDirection = 0.4;
+          this.thisDirection = 8;
           this.waiting = 0;
+          this.compareWidth = 1;
           setTimeout(()=>{if(this.waiting>=0)this.waiting=1},2000)
       }
       if(this.waiting!=0){
         this.last_input = this.compareWidth;
-        this.compareWidth += this.thisDirection;
+        var speed = Math.sin(((this.compareWidth) / 110) * Math.PI);
+        if(speed===0 )speed=0.001
+        this.compareWidth += this.thisDirection*speed ;
         this.waiting = 2;
-        if(this.compareWidth>=50)
-          this.thisDirection-=0.09
-        else
-        this.thisDirection+=0.09
       }
     }
   }
