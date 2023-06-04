@@ -59,6 +59,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     box-sizing: border-box;
+    margin: 0 3%;
   }
 
   .container div {
@@ -69,7 +70,7 @@ export default {
   .container div .text {
     background: rgba(0, 0, 0, 50%);
     font-family: "Montserrat Bold";
-    width: 50em;
+    width: 80%;
     line-height: 25px;
     padding: 1em;
     font-size: 20px;
@@ -79,7 +80,7 @@ export default {
 
   .container div img {
     position: relative;
-    width: 40em;
+    width: 80%;
   }
 
   .visible-scrollbar,
